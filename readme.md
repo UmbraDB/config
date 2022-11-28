@@ -18,3 +18,17 @@ rofi-themes from https://github.com/adi1090x/rofi
 
 Conky color python script for wttr.in from 	url = https://gist.github.com/tronje/21c4c1ecf7a9afb133f1814336ac3d48
 
+
+For Unimatrix 
+  
+  sudo curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o /usr/local/bin/unimatrix
+  
+  sudo chmod a+rx /usr/local/bin/unimatrix
+
+
+cursors: sudo xbps-install brezze-cursors
+
+theme: sudo xbps-install adwaita-plus
+
+icons: sudo xbps-install gnome-themes-extra
+
