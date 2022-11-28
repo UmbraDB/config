@@ -25,10 +25,11 @@ For Unimatrix
   
   sudo chmod a+rx /usr/local/bin/unimatrix
 
+for lxappearance:
 
-cursors: sudo xbps-install brezze-cursors
+  cursors: sudo xbps-install brezze-cursors
 
-theme: sudo xbps-install adwaita-plus
+  theme: sudo xbps-install adwaita-plus
 
-icons: sudo xbps-install gnome-themes-extra
+  icons: sudo xbps-install gnome-themes-extra
 
