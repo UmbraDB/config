@@ -1,4 +1,4 @@
-!--------------------xdefauls
+!--------------------xdefaults
 URxvt.font: xft:JetBrains Mono:style=Regular:size=12
 URxvt.boldFont: xft:JetBrains Mono:style=Bold:size=12
 URxvt.italicFont: xft:JetBrains Mono:style=Italic:size=12
