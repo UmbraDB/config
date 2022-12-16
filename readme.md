@@ -20,22 +20,22 @@ Conky color python script for wttr.in from 	url = https://gist.github.com/tronje
 
 
 For Unimatrix 
-  
+```  
   sudo curl -L https://raw.githubusercontent.com/will8211/unimatrix/master/unimatrix.py -o /usr/local/bin/unimatrix
   
   sudo chmod a+rx /usr/local/bin/unimatrix
-
+```
 for lxappearance:
 
-  cursors: sudo xbps-install brezze-cursors
+  cursors: `sudo xbps-install brezze-cursors`
 
-  theme: sudo xbps-install adwaita-plus
+  theme: `sudo xbps-install adwaita-plus`
 
-  icons: sudo xbps-install gnome-themes-extra
+  icons: `sudo xbps-install gnome-themes-extra`
   
  -------------------------------------------
 
-#AMD nVidia configuration process for LENOVO IDEAPAD GAMING 3 15ACH6
+#AMD nVidia Void Linux configuration process for LENOVO IDEAPAD GAMING 3 15ACH6
 
 I'm posting this here for future reference and for others to see, since nowadays we see more and more laptops come with Ryzens pared with nVidia GPUs, with switchable/shared graphics I want to share this, anyone is welcome to improve this post, I also take the opportunity to kindly ask that if anyone from void team sees this post to add a more complete section to the docs for future reference and new users!
 
