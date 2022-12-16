@@ -1,15 +1,17 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
 exec_always --no-startup-id "setxkbmap -layout pt"
-exec --no-startup-id "~/animated-background/scripts/loop_pngs.sh ~/animated-background/scripts/bh 0.03"
+exec --no-startup-id "~/animated-background/scripts/loop_pngs.sh ~/animated-background/scripts/wallpapper 0.01"
+# exec wallset -I 1
 exec --no-startup-id "conky -c ~/.config/conky/conky.conf"
 exec_always --no-startup-id "picom --config ~/.config/picom/picom.conf"
 #exec_always --no-startup-id "xautolock -time 15 -locker i3lock-fancy"
-exec_always --no-startup-id "echo "password" | sudo -S udiskie"
+#exec_always --no-startup-id "echo 6695 | sudo -S udiskie"
+exec_always --no-startup-id udiskie -a -n
 exec_always --no-startup-id "pulseaudio --start"
 new_window none
 gaps outer 0
-gaps inner 10
+gaps inner 5
 for_window [class=".*"] split toggle
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
@@ -23,14 +25,18 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --increase 2 
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --decrease 2
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 # Use Mouse+$mod to drag floating windows to their wanted position
+#bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks 
+#bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+#bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 floating_modifier $mod
+tiling_drag modifier
 bindsym $mod+t exec urxvt
 exec_always "xrdb ~/.Xresources"
-bindsym $mod+x kill
+bindsym $mod+x kill; split v
 bindsym $mod+Return exec --no-startup-id ~/.config/rofi/launchers/type-3/launcher.sh
 bindsym $mod+Shift+Return exec --no-startup-id rofi -i -show run -modi drun -show-icons
 bindsym $mod+Left focus left
@@ -41,8 +47,8 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-bindsym $mod+h split h
-bindsym $mod+v split v
+#bindsym $mod+h split h
+#bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
@@ -78,12 +84,14 @@ bindsym $mod+Shift+9 move container to workspace 9-Game $ws9
 bindsym $mod+Shift+0 move container to workspace 10-PTracer $ws10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Mod1+c exec --no-startup-id "echo "password" | sudo -S kill -a conky"
+bindsym $mod+Mod1+c exec --no-startup-id "echo 6695 | sudo -S kill -a conky"
 bindsym $mod+Control+c exec --no-startup-id "conky -c ~/.config/conky/conky.conf"
-bindsym $mod+Mod1+p exec --no-startup-id  "echo "password" | sudo -S kill -a picom"
+bindsym $mod+Mod1+p exec --no-startup-id  "echo 6695 | sudo -S kill -a picom"
 bindsym $mod+Control+p exec --no-startup-id "picom --config ~/.config/picom/picom.conf"
-bindsym $mod+Mod1+w exec "echo "password" | sudo -S kill $(pgrep loop_pngs.sh)"
-bindsym $mod+Control+w exec --no-startup-id "~/animated-background/scripts/loop_pngs.sh ~/animated-background/scripts/bh 0.03"
+bindsym $mod+Mod1+w exec "echo 6695 | sudo -S kill $(pgrep loop_pngs.sh)"
+bindsym $mod+Control+w exec --no-startup-id "~/animated-background/scripts/loop_pngs.sh ~/animated-background/scripts/wallpapper 0.01"
+#bindsym $mod+Mod1+w exec "echo 6695 | sudo -S kill $(pgrep -f /usr/local/bin/wallset)"
+#bindsym $mod+Control+w exec wallset -I 1
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 mode "resize" {
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -97,8 +105,9 @@ mode "resize" {
         bindsym Return mode "default":
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
-bindsym $mod+r mode "resize"
 }
+bindsym $mod+r mode "resize"
+
 bar 	{
         status_command i3status
         position top
@@ -110,41 +119,48 @@ bar 	{
                 active_workspace #292e29 #abc2ab #292e29
                 inactive_workspace #141414 #141414 #abc2ab
                 urgent_workspace #2f343a #900000 #ffffff
-  		}
+ 		}
 }
 for_window [title="urxvt-floating"] floating enable
 for_window [title="screensaver"] fullscreen enable
 bindsym Mod1+Control+Delete exec urxvt --title urxvt-floating -e htop
-bindsym $mod+n exec urxvt -hold --title urxvt-floating -e neofetch
+#bindsym $mod+n exec urxvt -hold --title urxvt-floating -e neofetch
 bindsym $mod+Shift+w exec urxvt -hold --title urxvt-floating -e sudo nmtui
 bindsym $mod+Shift+m exec urxvt --title urxvt-floating -e unimatrix -a -f -n -s 96 -l o
 bindsym $mod+Mod1+l exec urxvt --title screensaver -e unimatrix -a -f -n -s 96 -l o; exec --no-startup-id "sleep 2; i3lock-fancy"
 bindsym $mod+Shift+t exec urxvt --title urxvt-floating
 bindsym $mod+Shift+a exec urxvt -hold --title urxvt-floating -e alsamixer
-for_window [window_role="Organizer" title="firefox"] floating enable
-bindsym $mod+i exec firefox --title firefox
+for_window [window_role="Organizer"] floating enable
+bindsym $mod+i exec firefox
 bindsym $mod+u exec thunar
-bindsym $mod+Shift+v exec --no-startup-id "echo "password" | sudo -S virt-manager"
+bindsym $mod+Shift+v exec --no-startup-id "echo 6695 | sudo -S virt-manager"
 bindsym $mod+Shift+n exec inkscape
-bindsym Print exec --no-startup-id "echo "password" | sudo -S maim ~/Imagens/$(date +%s).jpg"
-bindsym Shift+Print exec --no-startup-id "echo "password" | sudo -S maim --delay=5 ~/Imagens/$(date +%s).jpg"
+bindsym Print exec --no-startup-id "echo 6695 | sudo -S maim ~/Imagens/$(date +%s).jpg"
+bindsym Shift+Print exec --no-startup-id "echo 6695 | sudo -S maim --delay=5 ~/Imagens/$(date +%s).jpg"
+for_window [class="obs"] floating enable
+for_window [title="obs"] floating enable
+bindsym $mod+Shift+Print exec obs --title obs
+for_window [class="SimpleScreenRecorder"] floating enable
+bindsym $mod+Control+Print exec simplescreenrecorder
 bindsym $mod+g exec gimp
 for_window [class="PacketTracer"] floating enable
 for_window [title="pt"] floating toggle
 bindsym $mod+p exec packettracer --title pt
-bindsym $mod+e exec --no-startup-id "echo "password" | sudo -S mono ~/raptor-flowchart/raptor.exe"
+bindsym $mod+e exec --no-startup-id "echo 6695 | sudo -S mono ~/raptor-flowchart/raptor.exe"
 for_window [class="Wireshark"] floating enable
-bindsym $mod+w exec --no-startup-id "echo "password" | sudo -S wireshark"
-bindsym $mod+z exec --no-startup-id "echo "password" | sudo -S zenmap"
-bindsym $mod+Shift+u exec --no-startup-id "echo "password" | sudo -S thunar"
-bindsym $mod+Control+Shift+Escape exec --no-startup-id "echo "password" | sudo -S clearine"
+bindsym $mod+w exec --no-startup-id "echo 6695 | sudo -S wireshark"
+bindsym $mod+z exec --no-startup-id "echo 6695 | sudo -S zenmap"
+bindsym $mod+Shift+u exec --no-startup-id "echo 6695 | sudo -S thunar"
+bindsym $mod+F4 exec --no-startup-id "echo 6695 | sudo -S clearine"
 bindsym $mod+o exec code-oss
 bindsym $mod+q exec notepadqq
-bindsym $mod+Shift+q exec --no-startup-id "echo "password" | sudo -S notepadqq --allow-root"
+bindsym $mod+Shift+q exec --no-startup-id "echo 6695 | sudo -S notepadqq --allow-root"
 bindsym $mod+Shift+l exec libreoffice
 bindsym $mod+b exec deadbeef
 bindsym $mod+s exec steam
 bindsym $mod+l exec lutris
-bindsym $mod+shift+g exec "echo "password" | sudo -S gparted"
+bindsym $mod+shift+g exec "echo 6695 | sudo -S gparted"
 bindsym $mod+Mod1+a exec lxappearance
-bindsym $mod+Mod1+shift+a exec lxappearance "echo "password" | sudo -S lxappearance"
+bindsym $mod+Mod1+shift+a exec lxappearance "echo 6695 | sudo -S lxappearance"
+for_window [class="Notes-Up"] floating enable
+bindsym $mod+n exec notes-up
