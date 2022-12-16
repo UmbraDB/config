@@ -32,6 +32,8 @@ for lxappearance:
   theme: sudo xbps-install adwaita-plus
 
   icons: sudo xbps-install gnome-themes-extra
+  
+ -------------------------------------------
 
 AMD nVidia configuration process for LENOVO IDEAPAD GAMING 3 15ACH6
 
