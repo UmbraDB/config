@@ -1,6 +1,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
 exec_always --no-startup-id "setxkbmap -layout pt"
+exec_always --no-startup-id "blanket -h"
 exec --no-startup-id "~/animated-background/scripts/loop_pngs.sh ~/animated-background/scripts/wallpapper 0.01"
 # exec wallset -I 1
 exec --no-startup-id "conky -c ~/.config/conky/conky.conf"
@@ -28,6 +29,7 @@ set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer --increase 2 
 bindsym XF86AudioLowerVolume exec --no-startup-id pamixer --decrease 2
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86Calculator exec xcalc
 # Use Mouse+$mod to drag floating windows to their wanted position
 #bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks 
 #bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
@@ -36,7 +38,7 @@ floating_modifier $mod
 tiling_drag modifier
 bindsym $mod+t exec urxvt
 exec_always "xrdb ~/.Xresources"
-bindsym $mod+x kill; split v
+bindsym $mod+x kill
 bindsym $mod+Return exec --no-startup-id ~/.config/rofi/launchers/type-3/launcher.sh
 bindsym $mod+Shift+Return exec --no-startup-id rofi -i -show run -modi drun -show-icons
 bindsym $mod+Left focus left
@@ -84,11 +86,11 @@ bindsym $mod+Shift+9 move container to workspace 9-Game $ws9
 bindsym $mod+Shift+0 move container to workspace 10-PTracer $ws10
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Mod1+c exec --no-startup-id "echo 6695 | sudo -S kill -a conky"
+bindsym $mod+Mod1+c exec --no-startup-id "echo <password> | sudo -S kill -a conky"
 bindsym $mod+Control+c exec --no-startup-id "conky -c ~/.config/conky/conky.conf"
-bindsym $mod+Mod1+p exec --no-startup-id  "echo 6695 | sudo -S kill -a picom"
+bindsym $mod+Mod1+p exec --no-startup-id  "echo <password> | sudo -S kill -a picom"
 bindsym $mod+Control+p exec --no-startup-id "picom --config ~/.config/picom/picom.conf"
-bindsym $mod+Mod1+w exec "echo 6695 | sudo -S kill $(pgrep loop_pngs.sh)"
+bindsym $mod+Mod1+w exec "echo <password> | sudo -S kill $(pgrep loop_pngs.sh)"
 bindsym $mod+Control+w exec --no-startup-id "~/animated-background/scripts/loop_pngs.sh ~/animated-background/scripts/wallpapper 0.01"
 #bindsym $mod+Mod1+w exec "echo 6695 | sudo -S kill $(pgrep -f /usr/local/bin/wallset)"
 #bindsym $mod+Control+w exec wallset -I 1
@@ -133,10 +135,10 @@ bindsym $mod+Shift+a exec urxvt -hold --title urxvt-floating -e alsamixer
 for_window [window_role="Organizer"] floating enable
 bindsym $mod+i exec firefox
 bindsym $mod+u exec thunar
-bindsym $mod+Shift+v exec --no-startup-id "echo 6695 | sudo -S virt-manager"
+bindsym $mod+Shift+v exec --no-startup-id "echo <password> | sudo -S virt-manager"
 bindsym $mod+Shift+n exec inkscape
-bindsym Print exec --no-startup-id "echo 6695 | sudo -S maim ~/Imagens/$(date +%s).jpg"
-bindsym Shift+Print exec --no-startup-id "echo 6695 | sudo -S maim --delay=5 ~/Imagens/$(date +%s).jpg"
+bindsym Print exec --no-startup-id "echo <password> | sudo -S maim ~/Imagens/$(date +%s).jpg"
+bindsym Shift+Print exec --no-startup-id "echo <password> | sudo -S maim --delay=5 ~/Imagens/$(date +%s).jpg"
 for_window [class="obs"] floating enable
 for_window [title="obs"] floating enable
 bindsym $mod+Shift+Print exec obs --title obs
@@ -146,21 +148,23 @@ bindsym $mod+g exec gimp
 for_window [class="PacketTracer"] floating enable
 for_window [title="pt"] floating toggle
 bindsym $mod+p exec packettracer --title pt
-bindsym $mod+e exec --no-startup-id "echo 6695 | sudo -S mono ~/raptor-flowchart/raptor.exe"
+bindsym $mod+e exec --no-startup-id "echo <password> | sudo -S mono ~/raptor-flowchart/raptor.exe"
 for_window [class="Wireshark"] floating enable
-bindsym $mod+w exec --no-startup-id "echo 6695 | sudo -S wireshark"
-bindsym $mod+z exec --no-startup-id "echo 6695 | sudo -S zenmap"
-bindsym $mod+Shift+u exec --no-startup-id "echo 6695 | sudo -S thunar"
-bindsym $mod+F4 exec --no-startup-id "echo 6695 | sudo -S clearine"
+bindsym $mod+w exec --no-startup-id "echo <password> | sudo -S wireshark"
+bindsym $mod+z exec --no-startup-id "echo <password> | sudo -S zenmap"
+bindsym $mod+Shift+u exec --no-startup-id "echo <password> | sudo -S thunar"
+bindsym $mod+F4 exec --no-startup-id "echo <password> | sudo -S clearine"
 bindsym $mod+o exec code-oss
 bindsym $mod+q exec notepadqq
-bindsym $mod+Shift+q exec --no-startup-id "echo 6695 | sudo -S notepadqq --allow-root"
-bindsym $mod+Shift+l exec libreoffice
-bindsym $mod+b exec deadbeef
+bindsym $mod+Shift+q exec --no-startup-id "echo <password> | sudo -S notepadqq --allow-root"
+bindsym $mod+Shift+l exec onlyoffice-desktopeditors
 bindsym $mod+s exec steam
 bindsym $mod+l exec lutris
-bindsym $mod+shift+g exec "echo 6695 | sudo -S gparted"
+bindsym $mod+shift+g exec "echo <password> | sudo -S gparted"
 bindsym $mod+Mod1+a exec lxappearance
-bindsym $mod+Mod1+shift+a exec lxappearance "echo 6695 | sudo -S lxappearance"
+bindsym $mod+Mod1+shift+a exec lxappearance "echo <password> | sudo -S lxappearance"
 for_window [class="Notes-Up"] floating enable
 bindsym $mod+n exec notes-up
+bindsym $mod+b exec --no-startup-id blueman-manager
+bindsym $mod+Mod1+s exec "echo <password> | sudo -S kill -a blanket"
+bindsym $mod+Control+s exec blanket -h

@@ -1,8 +1,7 @@
-!--------------------xdefaults
-URxvt.font: xft:JetBrains Mono:style=Regular:size=12
-URxvt.boldFont: xft:JetBrains Mono:style=Bold:size=12
-URxvt.italicFont: xft:JetBrains Mono:style=Italic:size=12
-URxvt.boldItalicfont: xft:JetBrains Mono:style=Bold Italic:size=12
+URxvt.font: xft:JetBrains Mono:style=Regular:size=10
+URxvt.boldFont: xft:JetBrains Mono:style=Bold:size=10
+URxvt.italicFont: xft:JetBrains Mono:style=Italic:size=10
+URxvt.boldItalicfont: xft:JetBrains Mono:style=Bold Italic:size=10
 urxvt*termName: rxvt
 urxvt*scrollBar: false
 urxvt*matcher.button: 1
@@ -15,7 +14,7 @@ Xft*hintstyle: hintfull
 URxvt*cursorUnderline: true
 URxvt.cursorBlink: 1
 Xft*rgba: rgb
-URxvt*geometry: 85x20
+URxvt*geometry: 400x400
 *internalBorder: 15
 URxvt*fading: 25
 URxvt*tintColor: #292e29
@@ -26,7 +25,7 @@ URxvt.keysym.Shift-Control-C: perl:clipboard:copy
 URxvt.iso14755: False
 URxvt.perl-ext-common: default,clipboard
 urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
+urxvt*background: rgba:0200/0900/0200/b800
 URxvt.bidi.enabled: 1
 
 
@@ -50,19 +49,19 @@ URxvt.bidi.enabled: 1
 *color10 : #478061
 
 ! 3: yellow
-*color3  : #ffaa22
+*color3  : #fcaf3e
 *color11 : #ffff22
 
 ! 4: blue
-*color4  : #0000ff
-*color12 : #4422ff
+*color4  : #8888ff
+*color12 : #0000ff
 
 ! 5: magenta
 *color5  : #660066
 *color13 : #ff00ff
 
 ! 6: cyan
-*color6  : #006666
+*color6  : #00ffff
 *color14 : #008baf
 
 ! 7: white

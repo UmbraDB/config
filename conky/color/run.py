@@ -54,6 +54,7 @@ color_mapping = {
     "[38;5;069m": LIGHTBLUE,
     "[38;5;081m": LIGHTBLUE,
     "[38;5;111m": LIGHTBLUE,
+	"[38;5;111;25": LIGHTBLUE,
     "[38;5;117m": LIGHTBLUE,
     "[38;5;153m": LIGHTBLUE,
 
